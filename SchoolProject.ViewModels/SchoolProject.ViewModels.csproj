@@ -10,4 +10,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolPoject.Models\SchoolPoject.Models.csproj" />
+  </ItemGroup>
+
 </Project>

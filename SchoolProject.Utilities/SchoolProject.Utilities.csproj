@@ -8,6 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolPoject.Models\SchoolPoject.Models.csproj" />
+    <ProjectReference Include="..\SchoolProject.Repositories\SchoolProject.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

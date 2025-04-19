@@ -10,4 +10,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolProject.Repositories\SchoolProject.Repositories.csproj" />
+    <ProjectReference Include="..\SchoolProject.Utilities\SchoolProject.Utilities.csproj" />
+    <ProjectReference Include="..\SchoolProject.ViewModels\SchoolProject.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>

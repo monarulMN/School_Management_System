@@ -5,9 +5,9 @@ namespace SchoolPoject.Models
     public class Student
     {
         public int Id { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public DateTime DateOfbirth { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public DateTime DateOfJoin { get; set; }
         public bool Selected { get; set; }
         [Unique]
