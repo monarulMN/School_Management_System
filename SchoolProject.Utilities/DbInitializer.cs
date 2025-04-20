@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SchoolPoject.Models;
+using SchoolProject.Models;
 using SchoolProject.Repositories;
 using System;
 using System.Collections.Generic;

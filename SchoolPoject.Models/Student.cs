@@ -1,6 +1,6 @@
 ﻿using ServiceStack.DataAnnotations;
 
-namespace SchoolPoject.Models
+namespace SchoolProject.Models
 {
     public class Student
     {

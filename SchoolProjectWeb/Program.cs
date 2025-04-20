@@ -1,20 +1,20 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using SchoolPoject.Models;
 using SchoolProject.Repositories;
 using SchoolProject.Services;
 using SchoolProject.Utilities;
-using SchoolProjectWeb.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllersWithViews();
 //var connectionString = builder.Configuration.GetConnectionString("SchoolProjectWebContextConnection") ?? throw new InvalidOperationException("Connection string 'SchoolProjectWebContextConnection' not found.");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolProject")));
 
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddDefaultTokenProviders().AddEntityFrameworkStores<ApplicationDbContext>();
-
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
@@ -23,7 +23,7 @@ builder.Services.AddScoped<ISessionService, SessionService>();
 builder.Services.AddScoped<IGradeService, GradeService>();
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
@@ -51,9 +51,9 @@ app.Run();
 
 void DataSeeding()
 {
-    using(var scoped = app.Services.CreateScope())
+    using(var scope = app.Services.CreateScope())
     {
-        var DbInitializer = scoped.ServiceProvider.GetRequiredService<IDbInitializer>();
+        var DbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
         DbInitializer.Initialize();
     }
 }

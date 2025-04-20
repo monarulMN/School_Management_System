@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using SchoolPoject.Models;
+using SchoolProject.Models;
 using SchoolProject.Repositories;
 using SchoolProject.Utilities;
 using SchoolProject.ViewModels;
@@ -17,21 +17,23 @@ namespace SchoolProject.Services
         private UserManager<ApplicationUser> _userManager;
         private RoleManager<IdentityRole> _roleManager;
 
-        public StudentService(IUnitOfWork unitOfWork, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public StudentService(IUnitOfWork unitOfWork, 
+            UserManager<ApplicationUser> userManager, 
+            RoleManager<IdentityRole> roleManager)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
             _roleManager = roleManager;
         }
 
-        public async Task AddStudent(CreateStudentViewModel Student)
+        public async Task AddStudent(CreateStudentViewModel student)
         {
             ApplicationUser appUser = new ApplicationUser()
             {
-                UserName = Student.UserName,
-                Email = Student.Email
+                UserName = student.UserName,
+                Email = student.Email
             };
-            var result = await _userManager.CreateAsync(appUser, Student.Password);
+            var result = await _userManager.CreateAsync(appUser, student.Password);
             if (result.Succeeded)
             {
                 if(!await _roleManager.RoleExistsAsync("Student"))
@@ -41,8 +43,8 @@ namespace SchoolProject.Services
                 await _userManager.AddToRoleAsync(appUser, "Student");
  
             }
-            Student.KeyId = appUser.Id;
-            var model = new CreateStudentViewModel().ConvertModel(Student);
+            student.KeyId = appUser.Id;
+            var model = new CreateStudentViewModel().ConvertModel(student);
             await _unitOfWork.GenericRepository<Student>().AddAsync(model);
             _unitOfWork.Save();
         }

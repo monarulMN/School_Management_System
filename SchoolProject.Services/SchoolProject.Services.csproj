@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SchoolPoject.Models\SchoolProject.Models.csproj" />
     <ProjectReference Include="..\SchoolProject.Repositories\SchoolProject.Repositories.csproj" />
     <ProjectReference Include="..\SchoolProject.Utilities\SchoolProject.Utilities.csproj" />
     <ProjectReference Include="..\SchoolProject.ViewModels\SchoolProject.ViewModels.csproj" />

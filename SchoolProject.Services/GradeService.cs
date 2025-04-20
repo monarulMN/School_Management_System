@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SchoolPoject.Models;
+using SchoolProject.Models;
 using SchoolProject.Repositories;
 using SchoolProject.Utilities;
 using SchoolProject.ViewModels;
@@ -27,24 +27,24 @@ namespace SchoolProject.Services
             _unitOfWork.Save();
         }
 
-        public int AddGradeWithStudent(GradeViewModel grade, int sessionId, List<int> StudentList)
-        {
-            int count = 0;
-            var model = new GradeViewModel().Convert(grade);
-            foreach(var item in StudentList)
-            {
-                if (!_unitOfWork.GenericRepository<Enroll>().Exists(x => x.SessionId == sessionId && x.StudentId == item)
-                {
-                    model.Enrolls.Add(new Enroll()
-                    {
-                        StudentId = item,
-                        GradeId = grade.Id,
-                        SessionId = sessionId
-                    });
-                    count++;
-                }
-            }
-        }
+        //public int AddGradeWithStudent(GradeViewModel grade, int sessionId, List<int> StudentList)
+        //{
+        //    int count = 0;
+        //    var model = new GradeViewModel().Convert(grade);
+        //    foreach(var item in StudentList)
+        //    {
+        //        if (!_unitOfWork.GenericRepository<Enroll>().Exists(x => x.SessionId == sessionId && x.StudentId == item)
+        //        {
+        //            model.Enrolls.Add(new Enroll()
+        //            {
+        //                StudentId = item,
+        //                GradeId = grade.Id,
+        //                SessionId = sessionId
+        //            });
+        //            count++;
+        //        }
+        //    }
+        //}
 
         public PagedResult<GradeViewModel> GetAll(int pageNumber, int pageSize)
         {

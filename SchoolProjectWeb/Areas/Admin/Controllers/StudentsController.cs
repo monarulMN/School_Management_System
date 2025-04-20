@@ -5,11 +5,11 @@ using SchoolProject.ViewModels;
 namespace SchoolProjectWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class StudentController : Controller
+    public class StudentsController : Controller
     {
         private IStudentService _studentService;
 
-        public StudentController(IStudentService studentService)
+        public StudentsController(IStudentService studentService)
         {
             _studentService = studentService;
         }
@@ -20,7 +20,7 @@ namespace SchoolProjectWeb.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Addstudent()
+        public async Task<IActionResult> AddStudent()
         {
             return View();
         }

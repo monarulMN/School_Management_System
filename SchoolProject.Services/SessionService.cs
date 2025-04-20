@@ -1,4 +1,4 @@
-﻿using SchoolPoject.Models;
+﻿using SchoolProject.Models;
 using SchoolProject.Repositories;
 using SchoolProject.Utilities;
 using SchoolProject.ViewModels;
